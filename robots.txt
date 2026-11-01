@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://andersoncpereira.com.br/sitemap.xml

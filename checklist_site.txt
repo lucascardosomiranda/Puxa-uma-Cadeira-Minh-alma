@@ -1,0 +1,32 @@
+Site completo e responsivo - certo
+Domínio configurado - configurar agora
+Hospedagem configurada - configurar agora
+HTTPS/SSL ativo - na hora da hospedagem
+Favicon - certo
+404.html - certo
+robots.txt - certo
+sitemap.xml - certo
+title da página - certo
+Meta description - certy
+H1, H2 e demais headings organizados - certo
+alt nas imagens - certo
+URLs amigáveis - certo
+Meta tags Open Graph - certo
+Imagens otimizadas - certo
+Código CSS/JS otimizado - certo
+Site testado no celular - certo
+Site testado no computador - certo
+Todos os links funcionando - certo
+Botões funcionando - certo
+WhatsApp funcionando -certo
+Links de e-mail funcionando - certo
+Formulários funcionando - nao tem forms
+Google Search Console configurado - como faz isso? nao tem no site
+Google Analytics configurado, se necessário - nao tem
+Pixel da Meta, se necessário - nao tem
+Teste de velocidade - como faz isso?
+Teste de SEO- como faz?
+Verificação de erros no console - como faz
+Backup dos arquivos do site - como faz
+Credenciais de acesso organizadas - como faz
+llms.txt — opcional - nao preciso
