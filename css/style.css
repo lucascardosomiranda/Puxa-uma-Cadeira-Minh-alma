@@ -531,12 +531,28 @@ h6 {
     box-shadow: 0 12px 30px rgba(7, 19, 29, 0.22);
 }
 
-/* botão idêntico ao "COMECE A LER" (herda o estilo de .video a) */
-.video .podcast .podcast-btn {
+/* linha final: botão "COMECE A OUVIR" + frase "e puxe uma cadeira." */
+.podcast-acao {
     grid-area: botao;
     justify-self: start;
     align-self: start;
-    margin: 2.5rem 0 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 1.5rem;
+    row-gap: 1rem;
+    margin-top: 2.5rem;
+}
+
+.podcast .podcast-complemento {
+    margin-bottom: 0;
+}
+
+/* botão idêntico ao "COMECE A LER" (herda o estilo de .video a) */
+.video .podcast .podcast-btn {
+    align-self: center;
+    margin: 0;
 }
 
 
@@ -3058,7 +3074,7 @@ footer p {
     .podcast-texto { justify-self: stretch; }
     .podcast .podcast-sub { font-size: 22px; }
     .podcast .podcast-capa { max-width: 340px; margin-top: 2.5rem; }
-    .video .podcast .podcast-btn { justify-self: center; margin-top: 2.5rem; }
+    .podcast-acao { justify-self: center; justify-content: center; margin-top: 2.5rem; text-align: center; }
 }
 
 @media (max-width: 768px) {
@@ -3069,7 +3085,8 @@ footer p {
     .podcast { padding: 2rem 1.25rem; border-radius: 20px; }
     .podcast .podcast-sub { font-size: 19px; margin-bottom: 1.25rem; }
     .podcast .podcast-capa { max-width: 100%; border-radius: 12px; margin-top: 2rem; }
-    .video .podcast .podcast-btn { font-size: 17px; margin-top: 2rem; }
+    .podcast-acao { margin-top: 2rem; }
+    .video .podcast .podcast-btn { font-size: 17px; }
 }
 
 @media (min-width: 1921px) {
