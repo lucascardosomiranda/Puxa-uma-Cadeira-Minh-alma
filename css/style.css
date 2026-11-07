@@ -466,7 +466,11 @@ h6 {
     transform: translateY(-50%);
 }
 
-/* podcast: cartão com capa à esquerda e texto + botão à direita */
+
+/* =====================================================
+   PODCAST: tudo empilhado e centralizado, em qualquer tela
+   ordem: título > subtítulo > textos > chamada > capa > botão
+   ===================================================== */
 
 .podcast {
     position: relative;
@@ -502,24 +506,43 @@ h6 {
     color: #07131D;
 }
 
-/* subtítulo: tamanho intermediário entre o título (34px) e o texto (22px) */
+/* subtítulo em itálico, com o nome do podcast em negrito */
 .podcast .podcast-sub {
     font-size: 27px;
-    font-weight: bold;
+    font-weight: normal;
+    font-style: italic;
     color: #07131D;
     margin-top: .4rem;
     margin-bottom: 1.75rem;
 }
 
+.podcast .podcast-sub strong {
+    font-weight: bold;
+    font-style: normal;
+}
+
 .podcast p {
     font-size: 22px;
     line-height: 1.5;
-    color: #0008;
-    margin-bottom: 1.5rem; /* "pular linha" entre os parágrafos */
+    color: #07131D;
+    margin-bottom: 1.5rem;
 }
 
-.podcast p:last-child {
+.podcast p em {
+    font-style: italic;
+}
+
+/* chamada final: "Puxe uma cadeira e COMECE A OUVIR." */
+.podcast .podcast-chamada {
+    font-weight: bold;
+    font-style: italic;
+    margin-top: .5rem;
     margin-bottom: 0;
+}
+
+.podcast .podcast-chamada strong {
+    font-weight: bold;
+    font-style: normal;
 }
 
 .podcast .podcast-capa {
@@ -531,22 +554,12 @@ h6 {
     box-shadow: 0 12px 30px rgba(7, 19, 29, 0.22);
 }
 
-/* linha final: botão "COMECE A OUVIR" + frase "e puxe uma cadeira." */
 .podcast-acao {
     grid-area: botao;
     justify-self: start;
     align-self: start;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    column-gap: 1.5rem;
-    row-gap: 1rem;
     margin-top: 2.5rem;
-}
-
-.podcast .podcast-complemento {
-    margin-bottom: 0;
 }
 
 /* botão idêntico ao "COMECE A LER" (herda o estilo de .video a) */
@@ -554,7 +567,6 @@ h6 {
     align-self: center;
     margin: 0;
 }
-
 
 
 /* autor */
@@ -1081,8 +1093,18 @@ footer p {
         left: 1.5vw;
     }
 
+    .podcast {
+        padding: 3rem;
+        column-gap: 3rem;
+        grid-template-columns: minmax(240px, 360px) 1fr;
+    }
+
     .podcast h3 {
         font-size: 30px;
+    }
+
+    .podcast .podcast-sub {
+        font-size: 25px;
     }
 
     .podcast p {
@@ -1233,9 +1255,13 @@ footer p {
         font-size: 38px;
     }
 
-    .video video,
+    .video video {
+        width: 84%;
+    }
+
     .podcast {
         width: 84%;
+        grid-template-columns: minmax(220px, 320px) 1fr;
     }
 
     .video a {
@@ -1381,13 +1407,13 @@ footer p {
         font-size: 36px;
     }
 
-    .video video,
-    .podcast {
+    .video video {
         width: 84%;
+        margin: 0 auto;
     }
 
-    .video video {
-        margin: 0 auto;
+    .podcast {
+        width: 84%;
     }
 
     .video a {
@@ -1570,9 +1596,44 @@ footer p {
         font-size: 33px;
     }
 
-    .video video,
+    .video video {
+        width: 88%;
+    }
+
+    /* a partir daqui o podcast vira um bloco único, sem cartão:
+       título, subtítulo, textos, chamada, capa e botão */
     .podcast {
         width: 88%;
+        margin-bottom: 4rem;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: none;
+        border: 0;
+        box-shadow: none;
+    }
+
+    .podcast-texto {
+        width: 100%;
+    }
+
+    .podcast-acao {
+        width: 100%;
+        justify-content: center;
+        justify-self: center;
+        align-self: center;
+        margin-top: 2.5rem;
+        text-align: center;
+    }
+
+    .video .podcast .podcast-btn {
+        margin: 0 auto;
+    }
+
+    /* "Experimente o podcast" também em negrito no celular */
+    .podcast .podcast-sub {
+        font-weight: bold;
     }
 
     .video a {
@@ -1584,16 +1645,21 @@ footer p {
         margin-left: 6%;
     }
 
-    .podcast {
-        margin-bottom: 4rem;
-    }
-
     .podcast h3 {
         font-size: 26px;
     }
 
+    .podcast .podcast-sub {
+        font-size: 22px;
+    }
+
     .podcast p {
         font-size: 18px;
+    }
+
+    .podcast .podcast-capa {
+        max-width: 340px;
+        margin-top: 2.5rem;
     }
 
     .autor h2 {
@@ -1872,7 +1938,7 @@ footer p {
     }
 
     .video a {
-        margin:2rem 0 0 0rem;
+        margin: 2rem 0 0 0;
         font-size: 19px;
         align-self: center;
     }
@@ -2018,6 +2084,10 @@ footer p {
 
     .ctafinal .cta-content p {
         font-size: 27px;
+    }
+
+    .video .podcast .podcast-btn {
+        font-size: 19px;
     }
 }
 
@@ -2277,7 +2347,7 @@ footer p {
     }
 
     .video a {
-        margin: 1.5rem 0 0 0rem;
+        margin: 1.5rem 0 0 0;
         font-size: 17px;
     }
 
@@ -2289,8 +2359,27 @@ footer p {
         font-size: 23px;
     }
 
+    .podcast .podcast-sub {
+        font-size: 19px;
+        margin-bottom: 1.25rem;
+    }
+
     .podcast p {
         font-size: 16px;
+    }
+
+    .podcast .podcast-capa {
+        max-width: 100%;
+        border-radius: 12px;
+        margin-top: 2rem;
+    }
+
+    .podcast-acao {
+        margin-top: 2rem;
+    }
+
+    .video .podcast .podcast-btn {
+        font-size: 17px;
     }
 
     .video-line {
@@ -2762,10 +2851,19 @@ footer p {
         font-size: 62px;
     }
 
-    .video video,
+    .video video {
+        width: 70%;
+        max-width: 1700px;
+    }
+
     .podcast {
         width: 70%;
         max-width: 1700px;
+        margin-bottom: 8rem;
+        padding: 5rem;
+        column-gap: 6rem;
+        grid-template-columns: minmax(300px, 560px) 1fr;
+        border-radius: 40px;
     }
 
     .video a {
@@ -2778,16 +2876,25 @@ footer p {
         left: 6vw;
     }
 
-    .podcast {
-        margin-bottom: 8rem;
-    }
-
     .podcast h3 {
         font-size: 44px;
     }
 
+    .podcast .podcast-sub {
+        font-size: 36px;
+    }
+
     .podcast p {
         font-size: 28px;
+    }
+
+    .podcast .podcast-capa {
+        border-radius: 24px;
+    }
+
+    .video .podcast .podcast-btn {
+        font-size: 28px;
+        padding: 1.4rem 4rem;
     }
 
     /* autor */
@@ -2988,11 +3095,27 @@ footer p {
         font-size: 38px;
     }
 
+    .podcast {
+        grid-template-columns: minmax(300px, 760px) 1fr;
+    }
+
     .podcast h3 {
         font-size: 58px;
     }
 
+    .podcast .podcast-sub {
+        font-size: 48px;
+    }
+
     .podcast p {
+        font-size: 38px;
+    }
+
+    .podcast .podcast-capa {
+        border-radius: 28px;
+    }
+
+    .video .podcast .podcast-btn {
         font-size: 38px;
     }
 
@@ -3041,62 +3164,4 @@ footer p {
     footer p {
         font-size: 22px;
     }
-}
-
-
-/* =====================================================
-   PODCAST: layout responsivo do cartão
-   (fica no final para sobrescrever as regras acima)
-   ===================================================== */
-
-@media (max-width: 1440px) {
-    .podcast { padding: 3rem; column-gap: 3rem; grid-template-columns: minmax(240px, 360px) 1fr; }
-    .podcast .podcast-sub { font-size: 25px; }
-}
-
-@media (max-width: 1280px) {
-    .podcast { grid-template-columns: minmax(220px, 320px) 1fr; }
-}
-
-/* a partir daqui empilha: título, subtítulo, texto, capa e botão (ordem pedida pelo cliente) */
-@media (max-width: 900px) {
-    .podcast {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        grid-template-areas:
-            "texto"
-            "capa"
-            "botao";
-        justify-items: center;
-        padding: 2.5rem 2rem;
-        row-gap: 0;
-    }
-    .podcast-texto { justify-self: stretch; }
-    .podcast .podcast-sub { font-size: 22px; }
-    .podcast .podcast-capa { max-width: 340px; margin-top: 2.5rem; }
-    .podcast-acao { justify-self: center; justify-content: center; margin-top: 2.5rem; text-align: center; }
-}
-
-@media (max-width: 768px) {
-    .video .podcast .podcast-btn { font-size: 19px; }
-}
-
-@media (max-width: 480px) {
-    .podcast { padding: 2rem 1.25rem; border-radius: 20px; }
-    .podcast .podcast-sub { font-size: 19px; margin-bottom: 1.25rem; }
-    .podcast .podcast-capa { max-width: 100%; border-radius: 12px; margin-top: 2rem; }
-    .podcast-acao { margin-top: 2rem; }
-    .video .podcast .podcast-btn { font-size: 17px; }
-}
-
-@media (min-width: 1921px) {
-    .podcast { padding: 5rem; column-gap: 6rem; grid-template-columns: minmax(300px, 560px) 1fr; border-radius: 40px; }
-    .podcast .podcast-sub { font-size: 36px; }
-    .video .podcast .podcast-btn { font-size: 28px; padding: 1.4rem 4rem; }
-}
-
-@media (min-width: 2561px) {
-    .podcast { grid-template-columns: minmax(300px, 760px) 1fr; }
-    .podcast .podcast-sub { font-size: 48px; }
-    .video .podcast .podcast-btn { font-size: 38px; }
 }
